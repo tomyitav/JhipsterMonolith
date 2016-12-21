@@ -1,0 +1,24 @@
+{
+    "jhipstermonolithApp": {
+        "train" : {
+            "home": {
+                "title": "Trains",
+                "createLabel": "Create a new Train",
+                "createOrEditLabel": "Create or edit a Train",
+                "search": "Search for Train"
+            },
+            "created": "A new Train is created with identifier {{ param }}",
+            "updated": "A Train is updated with identifier {{ param }}",
+            "deleted": "A Train is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Train {{ id }}?"
+            },
+            "detail": {
+                "title": "Train"
+            },
+            "name": "Name",
+            "speed": "Speed",
+            "diesel": "Diesel"
+        }
+    }
+}

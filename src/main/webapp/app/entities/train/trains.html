@@ -1,0 +1,60 @@
+<div>
+    <h2 data-translate="jhipstermonolithApp.train.home.title">Trains</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="train.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="jhipstermonolithApp.train.home.createLabel">
+                        Create new Train
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="jhipstermonolithApp.train.name">Name</span></th>
+                    <th><span data-translate="jhipstermonolithApp.train.speed">Speed</span></th>
+                    <th><span data-translate="jhipstermonolithApp.train.diesel">Diesel</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="train in vm.trains track by train.id">
+                    <td><a ui-sref="train-detail({id:train.id})">{{train.id}}</a></td>
+                    <td>{{train.name}}</td>
+                    <td>{{train.speed}}</td>
+                    <td>{{train.diesel}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="train-detail({id:train.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="train.edit({id:train.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="train.delete({id:train.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
