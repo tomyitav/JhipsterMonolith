@@ -1,6 +1,6 @@
 {
     "home": {
-        "title": "Welcome, Java Hipster!",
+        "title": "Welcome to transport app in Jhipster!",
         "subtitle": "This is your homepage",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
