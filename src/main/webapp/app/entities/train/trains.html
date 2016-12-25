@@ -30,7 +30,11 @@
                     <td><a ui-sref="train-detail({id:train.id})">{{train.id}}</a></td>
                     <td>{{train.name}}</td>
                     <td>{{train.speed}}</td>
-                    <td>{{train.diesel}}</td>
+                    <!--<td>{{train.diesel}}</td>-->
+                    <td class="text-center">
+                        <i class="glyphicon" ng-class="{'glyphicon-ok text-success': train.diesel,
+                        'glyphicon-remove text-danger': !train.diesel}"></i>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
