@@ -42,6 +42,9 @@ public class CarResourceIntTest {
     private static final String DEFAULT_COLOR = "AAAAAAAAAA";
     private static final String UPDATED_COLOR = "BBBBBBBBBB";
 
+    private static final String DEFAULT_USERID = "AAAAAAAAAA";
+    private static final String UPDATED_USERID = "BBBBBBBBBB";
+
     @Inject
     private CarRepository carRepository;
 
@@ -77,7 +80,8 @@ public class CarResourceIntTest {
     public static Car createEntity() {
         Car car = new Car()
                 .name(DEFAULT_NAME)
-                .color(DEFAULT_COLOR);
+                .color(DEFAULT_COLOR)
+                .userid(DEFAULT_USERID);
         return car;
     }
 
@@ -104,6 +108,7 @@ public class CarResourceIntTest {
         Car testCar = carList.get(carList.size() - 1);
         assertThat(testCar.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCar.getColor()).isEqualTo(DEFAULT_COLOR);
+        assertThat(testCar.getUserid()).isEqualTo(DEFAULT_USERID);
     }
 
     @Test
@@ -136,7 +141,8 @@ public class CarResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())));
+            .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
+            .andExpect(jsonPath("$.[*].userid").value(hasItem(DEFAULT_USERID.toString())));
     }
 
     @Test
@@ -150,7 +156,8 @@ public class CarResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(car.getId()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()));
+            .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()))
+            .andExpect(jsonPath("$.userid").value(DEFAULT_USERID.toString()));
     }
 
     @Test
@@ -171,7 +178,8 @@ public class CarResourceIntTest {
         Car updatedCar = carRepository.findOne(car.getId());
         updatedCar
                 .name(UPDATED_NAME)
-                .color(UPDATED_COLOR);
+                .color(UPDATED_COLOR)
+                .userid(UPDATED_USERID);
 
         restCarMockMvc.perform(put("/api/cars")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -184,6 +192,7 @@ public class CarResourceIntTest {
         Car testCar = carList.get(carList.size() - 1);
         assertThat(testCar.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCar.getColor()).isEqualTo(UPDATED_COLOR);
+        assertThat(testCar.getUserid()).isEqualTo(UPDATED_USERID);
     }
 
     @Test

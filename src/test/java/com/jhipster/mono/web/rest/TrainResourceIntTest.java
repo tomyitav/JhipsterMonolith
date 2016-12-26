@@ -45,6 +45,9 @@ public class TrainResourceIntTest {
     private static final Boolean DEFAULT_DIESEL = false;
     private static final Boolean UPDATED_DIESEL = true;
 
+    private static final String DEFAULT_USERID = "AAAAAAAAAA";
+    private static final String UPDATED_USERID = "BBBBBBBBBB";
+
     @Inject
     private TrainRepository trainRepository;
 
@@ -81,7 +84,8 @@ public class TrainResourceIntTest {
         Train train = new Train()
                 .name(DEFAULT_NAME)
                 .speed(DEFAULT_SPEED)
-                .diesel(DEFAULT_DIESEL);
+                .diesel(DEFAULT_DIESEL)
+                .userid(DEFAULT_USERID);
         return train;
     }
 
@@ -109,6 +113,7 @@ public class TrainResourceIntTest {
         assertThat(testTrain.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testTrain.getSpeed()).isEqualTo(DEFAULT_SPEED);
         assertThat(testTrain.isDiesel()).isEqualTo(DEFAULT_DIESEL);
+        assertThat(testTrain.getUserid()).isEqualTo(DEFAULT_USERID);
     }
 
     @Test
@@ -142,7 +147,8 @@ public class TrainResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(train.getId())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].speed").value(hasItem(DEFAULT_SPEED)))
-            .andExpect(jsonPath("$.[*].diesel").value(hasItem(DEFAULT_DIESEL.booleanValue())));
+            .andExpect(jsonPath("$.[*].diesel").value(hasItem(DEFAULT_DIESEL.booleanValue())))
+            .andExpect(jsonPath("$.[*].userid").value(hasItem(DEFAULT_USERID.toString())));
     }
 
     @Test
@@ -157,7 +163,8 @@ public class TrainResourceIntTest {
             .andExpect(jsonPath("$.id").value(train.getId()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.speed").value(DEFAULT_SPEED))
-            .andExpect(jsonPath("$.diesel").value(DEFAULT_DIESEL.booleanValue()));
+            .andExpect(jsonPath("$.diesel").value(DEFAULT_DIESEL.booleanValue()))
+            .andExpect(jsonPath("$.userid").value(DEFAULT_USERID.toString()));
     }
 
     @Test
@@ -179,7 +186,8 @@ public class TrainResourceIntTest {
         updatedTrain
                 .name(UPDATED_NAME)
                 .speed(UPDATED_SPEED)
-                .diesel(UPDATED_DIESEL);
+                .diesel(UPDATED_DIESEL)
+                .userid(UPDATED_USERID);
 
         restTrainMockMvc.perform(put("/api/trains")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -193,6 +201,7 @@ public class TrainResourceIntTest {
         assertThat(testTrain.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testTrain.getSpeed()).isEqualTo(UPDATED_SPEED);
         assertThat(testTrain.isDiesel()).isEqualTo(UPDATED_DIESEL);
+        assertThat(testTrain.getUserid()).isEqualTo(UPDATED_USERID);
     }
 
     @Test

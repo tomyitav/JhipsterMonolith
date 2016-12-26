@@ -9,6 +9,10 @@
         {
             "fieldName": "color",
             "fieldType": "String"
+        },
+		{
+            "fieldName": "userid",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

@@ -25,6 +25,9 @@ public class Car implements Serializable {
     @Field("color")
     private String color;
 
+    @Field("userid")
+    private String userid;
+
     public String getId() {
         return id;
     }
@@ -59,6 +62,19 @@ public class Car implements Serializable {
         this.color = color;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public Car userid(String userid) {
+        this.userid = userid;
+        return this;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -85,6 +101,7 @@ public class Car implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", color='" + color + "'" +
+            ", userid='" + userid + "'" +
             '}';
     }
 }

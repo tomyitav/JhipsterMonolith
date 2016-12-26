@@ -107,6 +107,7 @@
                                 name: null,
                                 speed: null,
                                 diesel: null,
+                                userid: null,
                                 id: null
                             };
                         }

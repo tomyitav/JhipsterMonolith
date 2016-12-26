@@ -17,7 +17,8 @@
                 "title": "Car"
             },
             "name": "Name",
-            "color": "Color"
+            "color": "Color",
+            "userid": "Userid"
         }
     }
 }

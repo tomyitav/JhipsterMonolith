@@ -28,6 +28,9 @@ public class Train implements Serializable {
     @Field("diesel")
     private Boolean diesel;
 
+    @Field("userid")
+    private String userid;
+
     public String getId() {
         return id;
     }
@@ -75,6 +78,19 @@ public class Train implements Serializable {
         this.diesel = diesel;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public Train userid(String userid) {
+        this.userid = userid;
+        return this;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -102,6 +118,7 @@ public class Train implements Serializable {
             ", name='" + name + "'" +
             ", speed='" + speed + "'" +
             ", diesel='" + diesel + "'" +
+            ", userid='" + userid + "'" +
             '}';
     }
 }

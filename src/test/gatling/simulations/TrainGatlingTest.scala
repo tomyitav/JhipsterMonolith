@@ -67,7 +67,7 @@ class TrainGatlingTest extends Simulation {
             .exec(http("Create new train")
             .post("/api/trains")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "speed":"0", "diesel":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "speed":"0", "diesel":null, "userid":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_train_url"))).exitHereIfFailed
             .pause(10)

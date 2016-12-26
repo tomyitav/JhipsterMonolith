@@ -67,7 +67,7 @@ class CarGatlingTest extends Simulation {
             .exec(http("Create new car")
             .post("/api/cars")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "color":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "color":"SAMPLE_TEXT", "userid":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_car_url"))).exitHereIfFailed
             .pause(10)

@@ -18,7 +18,8 @@
             },
             "name": "Name",
             "speed": "Speed",
-            "diesel": "Diesel"
+            "diesel": "Diesel",
+            "userid": "Userid"
         }
     }
 }

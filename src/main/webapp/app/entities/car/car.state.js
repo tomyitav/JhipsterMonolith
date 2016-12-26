@@ -106,6 +106,7 @@
                             return {
                                 name: null,
                                 color: null,
+                                userid: null,
                                 id: null
                             };
                         }
