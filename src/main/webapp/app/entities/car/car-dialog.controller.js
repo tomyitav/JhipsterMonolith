@@ -5,14 +5,28 @@
         .module('jhipstermonolithApp')
         .controller('CarDialogController', CarDialogController);
 
-    CarDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Car'];
+    CarDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Car', 'Principal', 'LoginService'];
 
-    function CarDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Car) {
+    function CarDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Car, Principal, LoginService) {
         var vm = this;
 
         vm.car = entity;
         vm.clear = clear;
         vm.save = save;
+
+        // vm.account = null;
+        vm.isAuthenticated = null;
+        vm.login = LoginService.open;
+        $scope.$on('authenticationSuccess', function() {
+            getAccount();
+        });
+
+        function getAccount() {
+            Principal.identity().then(function(account) {
+                vm.car.userid = account.login;
+                vm.isAuthenticated = Principal.isAuthenticated;
+            });
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -41,6 +55,6 @@
             vm.isSaving = false;
         }
 
-
+        getAccount();
     }
 })();
