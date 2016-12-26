@@ -1,13 +1,16 @@
 package com.jhipster.mono.service.impl;
 
+import com.jhipster.mono.security.SecurityUtils;
 import com.jhipster.mono.service.CarService;
 import com.jhipster.mono.domain.Car;
 import com.jhipster.mono.repository.CarRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
 import java.util.List;
 
 /**
@@ -40,7 +43,9 @@ public class CarServiceImpl implements CarService{
      */
     public List<Car> findAll() {
         log.debug("Request to get all Cars");
-        List<Car> result = carRepository.findAll();
+//        List<Car> result = carRepository.findAll();
+        String currentUser = SecurityUtils.getCurrentUserLogin();
+        List<Car> result = carRepository.findByUserid(currentUser);
 
         return result;
     }

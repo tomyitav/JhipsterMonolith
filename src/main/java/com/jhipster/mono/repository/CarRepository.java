@@ -1,5 +1,7 @@
 package com.jhipster.mono.repository;
 
+import java.util.List;
+
 import com.jhipster.mono.domain.Car;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -9,5 +11,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 @SuppressWarnings("unused")
 public interface CarRepository extends MongoRepository<Car,String> {
-
+	List<Car> findByUserid(String userid);
 }
