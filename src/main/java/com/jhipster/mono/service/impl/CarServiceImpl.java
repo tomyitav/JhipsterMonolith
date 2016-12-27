@@ -45,8 +45,12 @@ public class CarServiceImpl implements CarService{
         log.debug("Request to get all Cars");
 //        List<Car> result = carRepository.findAll();
         String currentUser = SecurityUtils.getCurrentUserLogin();
-        List<Car> result = carRepository.findByUserid(currentUser);
-
+        List<Car> result;
+        if(currentUser.equals("admin")) {
+        	return carRepository.findAll();
+        }
+        
+        result = carRepository.findByUserid(currentUser);
         return result;
     }
 
