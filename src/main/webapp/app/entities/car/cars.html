@@ -1,15 +1,21 @@
 <div>
-    <h2 data-translate="jhipstermonolithApp.car.home.title">Cars</h2>
+    <div class="col-sm-7">
+        <h2 data-translate="jhipstermonolithApp.car.home.title">Cars</h2>
+    </div>
+    <br/>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="car.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="jhipstermonolithApp.car.home.createLabel">
-                        Create new Car
-                    </span>
-                </button>
+                <div class="pull-right">
+                    <input type="search" ng-model="vm.searchQuery" id=
+                        "searchQuery"
+                           placeholder="search">
+                    <button class="btn btn-primary btn-sm btn-raised" ui-sref="car.new"
+                            uib-tooltip="Create new car">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -25,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="car in vm.cars track by car.id">
+                <tr ng-repeat="car in vm.cars  | filter: vm.searchQuery ">
                     <td><a ui-sref="car-detail({id:car.id})">{{car.id}}</a></td>
                     <td>{{car.name}}</td>
                     <td>{{car.color}}</td>

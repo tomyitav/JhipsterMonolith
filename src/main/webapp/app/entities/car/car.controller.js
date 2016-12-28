@@ -11,14 +11,19 @@
         var vm = this;
 
         vm.cars = [];
+        vm.searchQuery;
 
         loadAll();
 
         function loadAll() {
             Car.query(function(result) {
                 vm.cars = result;
-                vm.searchQuery = null;
+                // vm.searchQuery = null;
             });
         }
+
+        // function search(query) {
+        //     vm.cars = (car in vm.cars | filter: query);
+        // }
     }
 })();
