@@ -22,6 +22,7 @@
             });
         }
 
+
         // function search(query) {
         //     vm.cars = (car in vm.cars | filter: query);
         // }
