@@ -12,11 +12,10 @@
             restrict: 'E',
             scope: {
                 title: '@',
-                tooltip: '@'
+                tooltip: '@',
+                search: '='
             },
-            template : '<div class="pull-right"><input type="search" ng-model="vm.searchQuery" id="searchQuery" placeholder="search">' +
-            '<button class="btn btn-primary btn-sm btn-raised" ui-sref={{title}} uib-tooltip={{tooltip}}>' +
-            '<span class="glyphicon glyphicon-plus"></span></button></div>'
+            templateUrl:"app/entities/search-add-template.html"
         };
 
         return directive;
