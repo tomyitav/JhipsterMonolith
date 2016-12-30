@@ -1,15 +1,13 @@
 <div>
-    <h2 data-translate="jhipstermonolithApp.train.home.title">Trains</h2>
+    <div class="col-sm-7">
+        <h2 data-translate="jhipstermonolithApp.train.home.title">Trains</h2>
+    </div>
+    <br/>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="train.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="jhipstermonolithApp.train.home.createLabel">
-                        Create new Train
-                    </span>
-                </button>
+                <search-add title="train.new" tooltip="Create train" search="vm.searchQuery"></search-add>
             </div>
         </div>
     </div>
@@ -27,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="train in vm.trains track by train.id">
+                <tr ng-repeat="train in vm.trains | filter: vm.searchQuery ">
                     <td><a ui-sref="train-detail({id:train.id})">{{train.id}}</a></td>
                     <td>{{train.name}}</td>
                     <td>{{train.speed}}</td>

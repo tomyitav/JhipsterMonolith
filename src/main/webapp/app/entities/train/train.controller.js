@@ -11,13 +11,13 @@
         var vm = this;
 
         vm.trains = [];
+        vm.searchQuery;
 
         loadAll();
 
         function loadAll() {
             Train.query(function(result) {
                 vm.trains = result;
-                vm.searchQuery = null;
             });
         }
     }

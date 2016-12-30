@@ -18,13 +18,7 @@
         function loadAll() {
             Car.query(function(result) {
                 vm.cars = result;
-                // vm.searchQuery = null;
             });
         }
-
-
-        // function search(query) {
-        //     vm.cars = (car in vm.cars | filter: query);
-        // }
     }
 })();
