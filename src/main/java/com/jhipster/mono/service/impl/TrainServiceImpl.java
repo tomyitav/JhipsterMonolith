@@ -1,13 +1,17 @@
 package com.jhipster.mono.service.impl;
 
+import com.jhipster.mono.security.SecurityUtils;
 import com.jhipster.mono.service.TrainService;
+import com.jhipster.mono.domain.Car;
 import com.jhipster.mono.domain.Train;
 import com.jhipster.mono.repository.TrainRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
 import java.util.List;
 
 /**
@@ -40,8 +44,13 @@ public class TrainServiceImpl implements TrainService{
      */
     public List<Train> findAll() {
         log.debug("Request to get all Trains");
-        List<Train> result = trainRepository.findAll();
-
+        String currentUser = SecurityUtils.getCurrentUserLogin();
+        List<Train> result;
+        if(currentUser.equals("admin")) {
+        	return trainRepository.findAll();
+        }
+        
+        result = trainRepository.findByUserid(currentUser);
         return result;
     }
 
