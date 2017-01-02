@@ -14,19 +14,12 @@
         vm.clear = clear;
         vm.save = save;
 
-        // vm.account = null;
-        vm.isAuthenticated = null;
-        vm.login = LoginService.open;
-        $scope.$on('authenticationSuccess', function() {
-            getAccount();
+        Principal.identity().then(function (user) {
+            var data = {
+                user: user.login
+            };
+            vm.car.userid = data.user;
         });
-
-        function getAccount() {
-            Principal.identity().then(function(account) {
-                vm.car.userid = account.login;
-                vm.isAuthenticated = Principal.isAuthenticated;
-            });
-        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -55,6 +48,5 @@
             vm.isSaving = false;
         }
 
-        getAccount();
     }
 })();
