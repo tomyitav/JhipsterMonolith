@@ -15,7 +15,7 @@
     "searchEngine": false,
     "messageBroker": false,
     "buildTool": "maven",
-    "enableSocialSignIn": false,
+    "enableSocialSignIn": true,
     "rememberMeKey": "d9de24ebcca497954f77492a1c3495071b2ef408",
     "useSass": false,
     "applicationType": "monolith",
@@ -27,6 +27,7 @@
     "nativeLanguage": "en",
     "languages": [
       "en"
-    ]
+    ],
+    "serviceDiscoveryType": false
   }
 }

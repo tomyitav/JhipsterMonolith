@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.inject.Inject;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -59,5 +61,31 @@ public class UserResourceIntTest {
         restUserMockMvc.perform(get("/api/users/unknown")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetExistingUserWithAnEmailLogin() throws Exception {
+        User user = userService.createUser("john.doe@localhost.com", "johndoe", "John", "Doe", "john.doe@localhost.com", "en-US");
+
+        restUserMockMvc.perform(get("/api/users/john.doe@localhost.com")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.login").value("john.doe@localhost.com"));
+
+        userRepository.delete(user);
+    }
+
+    @Test
+    public void testDeleteExistingUserWithAnEmailLogin() throws Exception {
+        User user = userService.createUser("john.doe@localhost.com", "johndoe", "John", "Doe", "john.doe@localhost.com", "en-US");
+
+        restUserMockMvc.perform(delete("/api/users/john.doe@localhost.com")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        assertThat(userRepository.findOneByLogin("john.doe@localhost.com").isPresent()).isFalse();
+
+        userRepository.delete(user);
     }
 }

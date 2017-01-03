@@ -99,4 +99,15 @@ public class InitialSetupMigration {
             .get()
         );
     }
+    @ChangeSet(author = "initiator", id = "03-addSocialUserConnection", order = "03")
+    public void addSocialUserConnection(DB db) {
+        DBCollection socialUserConnectionCollection = db.getCollection("jhi_social_user_connection");
+        socialUserConnectionCollection.createIndex(BasicDBObjectBuilder
+                .start("user_id", 1)
+                .add("provider_id", 1)
+                .add("provider_user_id", 1)
+                .get(),
+            "user-prov-provusr-idx", true);
+    }
+
 }
