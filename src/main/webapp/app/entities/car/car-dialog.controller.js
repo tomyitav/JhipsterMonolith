@@ -5,9 +5,9 @@
         .module('jhipstermonolithApp')
         .controller('CarDialogController', CarDialogController);
 
-    CarDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Car', 'Principal', 'LoginService'];
+    CarDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Car', 'Principal'];
 
-    function CarDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Car, Principal, LoginService) {
+    function CarDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Car, Principal) {
         var vm = this;
 
         vm.car = entity;
