@@ -10,7 +10,6 @@
 # Full reference is available at:
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
-
 management:
     context-path: /management
     health:
@@ -36,13 +35,13 @@ spring:
     social:
         # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
         google:
-            clientId: xxx
-            clientSecret: xxx
+            clientId: 841078558630-qa8k97fbepcotbgvrb09959fhji9fh0u.apps.googleusercontent.com
+            clientSecret: ssN7LNCkdvmx8Bi7s8d6cDOY
 
         # see https://developers.facebook.com/docs/facebook-login/v2.2
         facebook:
-            clientId: xxx
-            clientSecret: xxx
+            clientId: 1835053770084157
+            clientSecret: 91b82e2d01cdfa668949b4724810f9cb
 
         # see https://apps.twitter.com/app/
         twitter:
@@ -89,7 +88,8 @@ jhipster:
         license:
         licenseUrl:
     social:
-        redirectAfterSignIn: "/#/home"
+        redirectAfterSignIn: "/#/cars"
     ribbon:
         # comma separated list of profiles to show a ribbon on the GUI
         displayOnActiveProfiles: dev
+
