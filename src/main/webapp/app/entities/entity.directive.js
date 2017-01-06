@@ -5,9 +5,7 @@
         .module('jhipstermonolithApp')
         .directive('searchAdd', searchAdd);
 
-    searchAdd.$inject = ['$translate', '$locale', 'tmhDynamicLocale'];
-
-    function searchAdd($translate, $locale, tmhDynamicLocale) {
+    function searchAdd() {
         var directive = {
             restrict: 'E',
             scope: {
