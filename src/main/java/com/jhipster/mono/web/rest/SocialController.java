@@ -4,7 +4,7 @@ import com.jhipster.mono.service.SocialService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.http.MediaType;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.support.URIBuilder;
@@ -39,5 +39,10 @@ public class SocialController {
                 .queryParam("success", "false")
                 .build().toString(), true);
         }
+    }
+    
+    @GetMapping(value = "/profilepic", produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getProfilePic() {
+    	return socialService.getUserProfile();
     }
 }

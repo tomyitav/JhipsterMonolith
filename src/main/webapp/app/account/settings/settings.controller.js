@@ -5,15 +5,16 @@
         .module('jhipstermonolithApp')
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate'];
+    SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate', '$http'];
 
-    function SettingsController (Principal, Auth, JhiLanguageService, $translate) {
+    function SettingsController (Principal, Auth, JhiLanguageService, $translate, $http) {
         var vm = this;
 
         vm.error = null;
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
+        var url = '/social/profilepic';
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -50,5 +51,9 @@
                 vm.error = 'ERROR';
             });
         }
+
+        $http.get(url).success(function(result) {
+            vm.image = result;
+        })
     }
 })();

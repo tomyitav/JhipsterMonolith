@@ -14,16 +14,18 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
 import javax.annotation.PostConstruct;
 
 @Service
@@ -44,6 +46,9 @@ public class SocialService {
 
     @Inject
     private MailService mailService;
+    
+    @Inject
+    private Facebook facebook;
 
     @PostConstruct
     private void init() {
@@ -153,5 +158,9 @@ public class SocialService {
     private void createSocialConnection(String login, Connection<?> connection) {
         ConnectionRepository connectionRepository = usersConnectionRepository.createConnectionRepository(login);
         connectionRepository.addConnection(connection);
+    }
+    
+    public byte[] getUserProfile() {
+    	return facebook.userOperations().getUserProfileImage();
     }
 }
