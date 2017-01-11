@@ -14,7 +14,6 @@
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
-        var url = '/social/profilepic';
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -52,8 +51,5 @@
             });
         }
 
-        $http.get(url).success(function(result) {
-            vm.image = result;
-        })
     }
 })();
