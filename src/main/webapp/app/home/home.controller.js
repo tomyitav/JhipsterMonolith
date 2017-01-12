@@ -12,6 +12,7 @@
 
         vm.account = null;
         vm.isAuthenticated = null;
+        vm.profilePicLocation= 'app/account/social/question-mark.gif';
         vm.login = LoginService.open;
         vm.register = register;
         $scope.$on('authenticationSuccess', function() {
@@ -24,6 +25,7 @@
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.isAuthenticated = Principal.isAuthenticated;
+                vm.profilePicLocation = '/social/profilepic';
             });
         }
         function register () {

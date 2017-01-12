@@ -10,7 +10,7 @@
             <div ng-switch="vm.isAuthenticated()">
                 <div class="image" ng-switch-when="true">
                     <h3>Profile pic</h3>
-                    <img src="/social/profilepic" class="img-circle" alt="Cinque Terre">
+                    <img ng-src={{vm.profilePicLocation}} class="img-circle" alt="Cinque Terre">
                 </div>
 
                 <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
