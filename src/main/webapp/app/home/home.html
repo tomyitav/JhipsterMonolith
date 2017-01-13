@@ -1,17 +1,13 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <span class="hipster img-responsive img-rounded"></span>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h1 data-translate="home.title">Welcome to Transort app with JHipster</h1>
             <p class="lead" data-translate="home.subtitle">This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
-                <div class="image" ng-switch-when="true">
-                    <h3>Profile pic</h3>
-                    <img ng-src={{vm.profilePicLocation}} class="img-circle" alt="Cinque Terre">
-                </div>
 
                 <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
@@ -41,6 +37,9 @@
             <p>
              <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
             </p>
+        </div>
+        <div class="col-md-4">
+            <social-pic title="Profile pic" location={{vm.profilePicLocation}}></social-pic>
         </div>
     </div>
 </div>
