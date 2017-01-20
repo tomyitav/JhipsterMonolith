@@ -57,7 +57,7 @@ module.exports = function () {
 
     browserSync({
         open: true,
-        port: config.port,
+        port: config.apiPort,
         server: {
             baseDir: config.app,
             middleware: proxies
