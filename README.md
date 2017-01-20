@@ -85,11 +85,7 @@ Then run:
 
     docker-compose -f src/main/docker/app.yml up -d
 
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
-
-## Continuous Integration (optional)
-
-To set up a CI environment, consult the [Setting up Continuous Integration][] page.
+For more information refer to [Using Docker and Docker-Compose][], this page contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
 
 [JHipster Homepage and latest documentation]: https://jhipster.github.io
 [JHipster 3.12.1 archive]: https://jhipster.github.io/documentation-archive/v3.12.1
