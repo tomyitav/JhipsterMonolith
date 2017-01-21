@@ -20,8 +20,8 @@
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
-                <li ng-switch-when="true">
-                    <a ui-sref="home" ng-click="vm.collapseNavbar()">
+                <li ng-switch-when="true" ui-sref-active="active">
+                    <a ui-sref="map" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-map-marker"></span>
                         <span class="hidden-sm" data-translate="global.menu.map">Map</span>
                     </a>
