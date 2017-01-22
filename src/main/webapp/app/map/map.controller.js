@@ -9,5 +9,6 @@
 
     function MapController (Principal, Auth, JhiLanguageService, $translate, $http) {
         var vm = this;
+        vm.viewer = new Cesium.Viewer('cesiumContainer');
     }
 })();
