@@ -19,11 +19,27 @@
             Cesium.Camera.DEFAULT_VIEW_FACTOR = 0;
             Cesium.Camera.DEFAULT_VIEW_RECTANGLE = rectangle;
 
+            var pinBuilder = new Cesium.PinBuilder();
+
             vm.viewer = new Cesium.Viewer('cesiumContainer', {
                 fullscreenButton: false,
                 timeline: false,
                 animation: false
             });
+
+            var bluePin = vm.viewer.entities.add({
+                name : 'Blank blue pin',
+                position : Cesium.Cartesian3.fromDegrees(35, 32),
+                billboard : {
+                    image : pinBuilder.fromColor(Cesium.Color.ROYALBLUE, 48).toDataURL(),
+                    verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+                }
+            });
+
+            Cesium.when.all([bluePin], function(pins){
+                vm.viewer.zoomTo(pins);
+            });
+
         }
 
         initializeCesium();
