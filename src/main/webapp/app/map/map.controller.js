@@ -5,10 +5,22 @@
         .module('jhipstermonolithApp')
         .controller('MapController', MapController);
 
-    MapController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate', '$http'];
+    MapController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate', '$http', '$state'];
 
-    function MapController (Principal, Auth, JhiLanguageService, $translate, $http) {
+    function MapController (Principal, Auth, JhiLanguageService, $translate, $http, $state) {
         var vm = this;
+
+        function addPinToView(pinBuilder) {
+            var bluePin = vm.viewer.entities.add({
+                name: 'Blank blue pin',
+                position: Cesium.Cartesian3.fromDegrees(35, 32),
+                billboard: {
+                    image: pinBuilder.fromColor(Cesium.Color.ROYALBLUE, 48).toDataURL(),
+                    verticalOrigin: Cesium.VerticalOrigin.BOTTOM
+                }
+            });
+            return bluePin;
+        }
 
         function initializeCesium() {
             var west = 32.0;
@@ -27,14 +39,12 @@
                 animation: false
             });
 
-            var bluePin = vm.viewer.entities.add({
-                name : 'Blank blue pin',
-                position : Cesium.Cartesian3.fromDegrees(35, 32),
-                billboard : {
-                    image : pinBuilder.fromColor(Cesium.Color.ROYALBLUE, 48).toDataURL(),
-                    verticalOrigin : Cesium.VerticalOrigin.BOTTOM
-                }
-            });
+            var bluePin = addPinToView(pinBuilder);
+            var handler = new Cesium.ScreenSpaceEventHandler(vm.viewer.canvas);
+            handler.setInputAction(function (click) {
+                console.log('Clicked!');
+                $state.go('car.new');
+            }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
 
             Cesium.when.all([bluePin], function(pins){
                 vm.viewer.zoomTo(pins);
