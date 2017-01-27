@@ -40,11 +40,19 @@
             });
 
             var bluePin = addPinToView(pinBuilder);
-            var handler = new Cesium.ScreenSpaceEventHandler(vm.viewer.canvas);
+            var handler = new Cesium.ScreenSpaceEventHandler(vm.viewer.scene.canvas);
             handler.setInputAction(function (click) {
                 console.log('Clicked!');
                 $state.go('car.new');
             }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
+
+            var handler1 = new Cesium.ScreenSpaceEventHandler(vm.viewer.scene.canvas);
+            handler1.setInputAction(function(click) {
+                var pickedObject = vm.viewer.scene.pick(click.position);
+                if (Cesium.defined(pickedObject)) {
+                    console.log('Clicked pin');
+                }
+            } , Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
             Cesium.when.all([bluePin], function(pins){
                 vm.viewer.zoomTo(pins);
