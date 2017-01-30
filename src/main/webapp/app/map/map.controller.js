@@ -23,7 +23,7 @@
         }
 
         function initializeCesium() {
-            var west = 32.0;
+            var west = 31.5;
             var south = 27.0;
             var east = 34.0;
             var north = 35.0;
