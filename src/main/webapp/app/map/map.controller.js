@@ -28,6 +28,7 @@
             var east = 34.0;
             var north = 35.0;
             var rectangle = Cesium.Rectangle.fromDegrees(west, south, east, north);
+            Cesium.BingMapsApi.defaultKey = 'AsF2NF1srbJHFhgPiOLQJNo-IUNv_sgUw0nwnbYF-pHV1XhmS18esBCrDjnl9o9A';
             Cesium.Camera.DEFAULT_VIEW_FACTOR = 0;
             Cesium.Camera.DEFAULT_VIEW_RECTANGLE = rectangle;
 
