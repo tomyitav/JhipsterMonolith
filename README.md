@@ -1,6 +1,6 @@
 # jhipstermonolith
 
-Transport app implementation, using JHipster 3.12.1. you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.12.1](https://jhipster.github.io/documentation-archive/v3.12.1).
+This application was generated using JHipster 3.12.1, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.12.1](https://jhipster.github.io/documentation-archive/v3.12.1).
 
 ## Development
 
@@ -85,7 +85,11 @@ Then run:
 
     docker-compose -f src/main/docker/app.yml up -d
 
-For more information refer to [Using Docker and Docker-Compose][], this page contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+
+## Continuous Integration (optional)
+
+To set up a CI environment, consult the [Setting up Continuous Integration][] page.
 
 [JHipster Homepage and latest documentation]: https://jhipster.github.io
 [JHipster 3.12.1 archive]: https://jhipster.github.io/documentation-archive/v3.12.1

@@ -108,6 +108,8 @@
                                 speed: null,
                                 diesel: null,
                                 userid: null,
+                                longitude: null,
+                                latitude: null,
                                 id: null
                             };
                         }

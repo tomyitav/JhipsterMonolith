@@ -17,6 +17,14 @@
 		{
             "fieldName": "userid",
             "fieldType": "String"
+        },
+		{
+            "fieldName": "longitude",
+            "fieldType": "Double"
+        },
+		{
+            "fieldName": "latitude",
+            "fieldType": "Double"
         }
     ],
     "dto": "no",

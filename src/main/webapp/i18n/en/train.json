@@ -19,7 +19,9 @@
             "name": "Name",
             "speed": "Speed",
             "diesel": "Diesel",
-            "userid": "Userid"
+            "userid": "Userid",
+            "longitude": "Longitude",
+            "latitude": "Latitude"
         }
     }
 }

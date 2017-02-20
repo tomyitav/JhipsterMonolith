@@ -31,6 +31,12 @@ public class Train implements Serializable {
     @Field("userid")
     private String userid;
 
+    @Field("longitude")
+    private Double longitude;
+
+    @Field("latitude")
+    private Double latitude;
+
     public String getId() {
         return id;
     }
@@ -91,6 +97,32 @@ public class Train implements Serializable {
         this.userid = userid;
     }
 
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Train longitude(Double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Train latitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -119,6 +151,8 @@ public class Train implements Serializable {
             ", speed='" + speed + "'" +
             ", diesel='" + diesel + "'" +
             ", userid='" + userid + "'" +
+            ", longitude='" + longitude + "'" +
+            ", latitude='" + latitude + "'" +
             '}';
     }
 }

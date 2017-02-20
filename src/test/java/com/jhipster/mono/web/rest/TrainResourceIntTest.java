@@ -48,6 +48,12 @@ public class TrainResourceIntTest {
     private static final String DEFAULT_USERID = "AAAAAAAAAA";
     private static final String UPDATED_USERID = "BBBBBBBBBB";
 
+    private static final Double DEFAULT_LONGITUDE = 1D;
+    private static final Double UPDATED_LONGITUDE = 2D;
+
+    private static final Double DEFAULT_LATITUDE = 1D;
+    private static final Double UPDATED_LATITUDE = 2D;
+
     @Inject
     private TrainRepository trainRepository;
 
@@ -85,7 +91,9 @@ public class TrainResourceIntTest {
                 .name(DEFAULT_NAME)
                 .speed(DEFAULT_SPEED)
                 .diesel(DEFAULT_DIESEL)
-                .userid(DEFAULT_USERID);
+                .userid(DEFAULT_USERID)
+                .longitude(DEFAULT_LONGITUDE)
+                .latitude(DEFAULT_LATITUDE);
         return train;
     }
 
@@ -114,6 +122,8 @@ public class TrainResourceIntTest {
         assertThat(testTrain.getSpeed()).isEqualTo(DEFAULT_SPEED);
         assertThat(testTrain.isDiesel()).isEqualTo(DEFAULT_DIESEL);
         assertThat(testTrain.getUserid()).isEqualTo(DEFAULT_USERID);
+        assertThat(testTrain.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
+        assertThat(testTrain.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
     }
 
     @Test
@@ -148,7 +158,9 @@ public class TrainResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].speed").value(hasItem(DEFAULT_SPEED)))
             .andExpect(jsonPath("$.[*].diesel").value(hasItem(DEFAULT_DIESEL.booleanValue())))
-            .andExpect(jsonPath("$.[*].userid").value(hasItem(DEFAULT_USERID.toString())));
+            .andExpect(jsonPath("$.[*].userid").value(hasItem(DEFAULT_USERID.toString())))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())));
     }
 
     @Test
@@ -164,7 +176,9 @@ public class TrainResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.speed").value(DEFAULT_SPEED))
             .andExpect(jsonPath("$.diesel").value(DEFAULT_DIESEL.booleanValue()))
-            .andExpect(jsonPath("$.userid").value(DEFAULT_USERID.toString()));
+            .andExpect(jsonPath("$.userid").value(DEFAULT_USERID.toString()))
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()));
     }
 
     @Test
@@ -187,7 +201,9 @@ public class TrainResourceIntTest {
                 .name(UPDATED_NAME)
                 .speed(UPDATED_SPEED)
                 .diesel(UPDATED_DIESEL)
-                .userid(UPDATED_USERID);
+                .userid(UPDATED_USERID)
+                .longitude(UPDATED_LONGITUDE)
+                .latitude(UPDATED_LATITUDE);
 
         restTrainMockMvc.perform(put("/api/trains")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -202,6 +218,8 @@ public class TrainResourceIntTest {
         assertThat(testTrain.getSpeed()).isEqualTo(UPDATED_SPEED);
         assertThat(testTrain.isDiesel()).isEqualTo(UPDATED_DIESEL);
         assertThat(testTrain.getUserid()).isEqualTo(UPDATED_USERID);
+        assertThat(testTrain.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
+        assertThat(testTrain.getLatitude()).isEqualTo(UPDATED_LATITUDE);
     }
 
     @Test
